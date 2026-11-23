@@ -1,0 +1,24 @@
+
+# --- Seguridad: nunca subir secretos ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+.claude/
+# --- Dependencias / builds ---
+node_modules/
+.next/
+dist/
+build/
+*.tsbuildinfo
+__pycache__/
+*.pyc
+.venv/
+venv/
+# --- Logs y datos ---
+*.log
+*.log.*
+logs/
+.DS_Store

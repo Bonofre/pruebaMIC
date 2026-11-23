@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Macroscopía — Dictado por Voz</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <div class="app-header">
+      <h1>Dictado Macroscopía</h1>
+      <span id="statusBadge" class="status-badge status-off">Detenido</span>
+    </div>
+
+    <div id="commandFlash" class="command-flash"></div>
+
+    <div class="buttons">
+      <button id="btnStart">Iniciar Micrófono</button>
+      <button id="btnStop">Detener</button>
+    </div>
+
+    <div id="output" class="output"></div>
+
+    <details class="commands-help">
+      <summary>Comandos de voz disponibles</summary>
+      <ul>
+        <li><b>guardar</b> — guarda la descripción actual</li>
+        <li><b>continuar</b> / <b>siguiente muestra</b> — guarda y empieza nueva</li>
+        <li><b>borrar</b> / <b>limpiar</b> — borra el texto actual</li>
+      </ul>
+    </details>
+
+    <section class="saved-section">
+      <h2>Descripciones guardadas</h2>
+      <p id="emptyNote" class="empty-note">Aún no hay descripciones guardadas.</p>
+      <div id="descriptionList"></div>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

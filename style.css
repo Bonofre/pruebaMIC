@@ -1,0 +1,233 @@
+:root {
+  --color-bg: #f0f4f8;
+  --color-surface: #ffffff;
+  --color-start: #22c55e;
+  --color-start-hover: #16a34a;
+  --color-stop: #ef4444;
+  --color-stop-hover: #dc2626;
+  --color-output-bg: #f8fafc;
+  --color-output-border: #e2e8f0;
+  --color-text: #1e293b;
+  --color-text-muted: #94a3b8;
+  --color-accent: #6366f1;
+  --radius: 12px;
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: system-ui, -apple-system, Arial, sans-serif;
+  background: var(--color-bg);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 40px 16px;
+  margin: 0;
+  color: var(--color-text);
+}
+
+.container {
+  background: var(--color-surface);
+  padding: 32px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  width: 100%;
+  max-width: 560px;
+}
+
+/* ── Header ── */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* ── Status badge ── */
+.status-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.status-on    { background: #dcfce7; color: #15803d; }
+.status-off   { background: #f1f5f9; color: #64748b; }
+.status-error { background: #fee2e2; color: #b91c1c; }
+
+/* ── Command flash ── */
+.command-flash {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  background: #eef2ff;
+  color: var(--color-accent);
+  font-size: 0.88rem;
+  font-weight: 500;
+  border-radius: 8px;
+  text-align: center;
+  transition: max-height 0.2s ease, opacity 0.2s ease, padding 0.2s ease, margin 0.2s ease;
+}
+
+.command-flash.visible {
+  max-height: 48px;
+  opacity: 1;
+  padding: 8px 12px;
+  margin-bottom: 16px;
+}
+
+/* ── Botones ── */
+.buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+button {
+  flex: 1;
+  padding: 11px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
+}
+
+button:active { transform: scale(0.97); }
+
+#btnStart { background: var(--color-start); color: #fff; }
+#btnStart:hover {
+  background: var(--color-start-hover);
+  box-shadow: 0 2px 8px rgba(34, 197, 94, 0.35);
+}
+
+#btnStop { background: var(--color-stop); color: #fff; }
+#btnStop:hover {
+  background: var(--color-stop-hover);
+  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.35);
+}
+
+/* ── Output ── */
+.output {
+  padding: 16px;
+  min-height: 120px;
+  background: var(--color-output-bg);
+  border: 1px solid var(--color-output-border);
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.output:empty::before {
+  content: "Inicie el micrófono y comience a dictar…";
+  color: var(--color-text-muted);
+}
+
+.final   { color: var(--color-text); }
+.interim { color: var(--color-text-muted); font-style: italic; }
+
+/* ── Ayuda de comandos ── */
+.commands-help {
+  margin-top: 14px;
+  font-size: 0.85rem;
+  color: #475569;
+  border: 1px solid var(--color-output-border);
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+
+.commands-help summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--color-accent);
+  user-select: none;
+}
+
+.commands-help ul {
+  margin: 8px 0 4px 16px;
+  padding: 0;
+  line-height: 1.8;
+}
+
+/* ── Sección guardados ── */
+.saved-section {
+  margin-top: 28px;
+  border-top: 1px solid var(--color-output-border);
+  padding-top: 20px;
+}
+
+.saved-section h2 {
+  margin: 0 0 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+.empty-note {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* ── Tarjetas de descripción ── */
+.desc-card {
+  background: var(--color-output-bg);
+  border: 1px solid var(--color-output-border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+}
+
+.desc-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.desc-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  flex: 1;
+}
+
+.desc-time {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.btn-copy, .btn-delete {
+  flex: none;
+  padding: 3px 10px;
+  font-size: 0.75rem;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid var(--color-output-border);
+  background: #fff;
+  color: #475569;
+  transition: background 0.12s;
+}
+
+.btn-copy:hover   { background: #eef2ff; color: var(--color-accent); }
+.btn-delete:hover { background: #fee2e2; color: var(--color-stop); }
+
+.desc-text {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--color-text);
+}
