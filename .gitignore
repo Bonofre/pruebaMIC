@@ -6,7 +6,6 @@
 *.pem
 *.key
 *.crt
-.claude/
 # --- Dependencias / builds ---
 node_modules/
 .next/
